@@ -16,8 +16,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" suppressHydrationWarning>
-      <body className=" container mx-auto">
-        <Providers>{children}</Providers>
+      <body className="min-h-dvh antialiased">
+        <Providers>
+          <div className="page-lux min-h-dvh">
+            <div className="rail">
+              <main className="rail-content">{children}</main>
+              <div className="rail-empty" />
+            </div>
+          </div>
+        </Providers>
       </body>
     </html>
   );
