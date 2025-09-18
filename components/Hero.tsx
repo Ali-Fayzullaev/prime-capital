@@ -188,7 +188,7 @@ function VideoAmbient() {
     <>
       <video
         ref={videoRef}
-        src="/hero.mp4" // <-- файл положи в public/hero.mp4
+        src="/hero2.mp4" // <-- файл положи в public/hero.mp4
         // poster="/hero-poster.jpg"   // <-- постер в public/hero-poster.jpg
         autoPlay
         loop

@@ -46,6 +46,7 @@ export default function Header() {
 
       {/* стеклянная панель, светлая/тёмная */}
       <div className="
+        px-2  lg:px-5
         backdrop-blur
         supports-[backdrop-filter]:bg-white/65 dark:supports-[backdrop-filter]:bg-white/10
         border-b border-black/10 dark:border-white/15
@@ -60,7 +61,7 @@ export default function Header() {
                   alt="Prime Capital"
                   width={44}
                   height={44}
-                  className="rounded-md ring-1 ring-black/10 dark:ring-white/15 bg-white/60 dark:bg-transparent p-0.5"
+                  className="rounded-3xl ring-1 ring-black/10 dark:ring-white/15 bg-white/60 dark:bg-transparent p-0.5"
                 />
                 <span className="font-extrabold text-lg tracking-tight text-[var(--pc-ink-light)] dark:text-[var(--pc-ink)]">
                   Prime <span className="text-[var(--pc-gold)]">Capital</span>
