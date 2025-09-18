@@ -5,6 +5,7 @@ import FeaturesRefi from "@/components/features-refi";
 import CTA from "@/components/cta";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
+import Testimonials from "@/components/testimonials";
 
 export default function Page() {
   return (
@@ -16,6 +17,7 @@ export default function Page() {
         <FeaturesRefi />
         <CTA />
         <Contact />
+        <Testimonials/>
       </main>
       <Footer />
     </>
