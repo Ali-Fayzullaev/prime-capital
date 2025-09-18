@@ -7,7 +7,13 @@ import ThemeToggle from "./theme-toggle";
 import LanguageToggle from "./language-toggle";
 import { useI18n } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
 export default function Header() {
@@ -19,6 +25,7 @@ export default function Header() {
         { href: "#services", label: t("nav_services") },
         { href: "#refi", label: t("nav_refi") },
         { href: "#contact", label: t("nav_contact") },
+        { href: "#reviews", label: t("reviews") },
       ].map((l) => (
         <li key={l.href}>
           <a
@@ -45,15 +52,17 @@ export default function Header() {
       <div className="h-0.5 w-full bg-[var(--pc-gold)]/80"></div>
 
       {/* стеклянная панель, светлая/тёмная */}
-      <div className="
+      <div
+        className="
         px-2  lg:px-5
         backdrop-blur
         supports-[backdrop-filter]:bg-white/65 dark:supports-[backdrop-filter]:bg-white/10
         border-b border-black/10 dark:border-white/15
-      ">
+      "
+      >
         <div className="rail">
           <div className="rail-content">
-            <div className="h-[var(--header-h)] flex items-center justify-between gap-4">
+            <div className="h-[var(--header-h)] flex items-center justify-between gap-4 py-2">
               {/* logo & brand */}
               <Link href="#" className="group flex items-center gap-3">
                 <Image
@@ -127,14 +136,18 @@ export default function Header() {
                           alt="Prime Capital"
                           width={32}
                           height={32}
-                          className="rounded-md ring-1 ring-black/10 dark:ring-white/15 bg-white/70 dark:bg-transparent p-0.5"
+                          className="rounded-3xl ring-1 ring-black/10 dark:ring-white/15 bg-white/70 dark:bg-transparent p-0.5"
                         />
                         Prime Capital
                       </SheetTitle>
                     </SheetHeader>
 
-                    <div className="mt-8 space-y-8">
-                      <Nav onClick={() => (document?.activeElement as HTMLElement)?.blur()} />
+                    <div className="mt-8 space-y-8 px-3">
+                      <Nav
+                        onClick={() =>
+                          (document?.activeElement as HTMLElement)?.blur()
+                        }
+                      />
                       <a
                         href={`tel:${SITE.phoneMain.replace(/\s/g, "")}`}
                         className="

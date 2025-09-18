@@ -86,9 +86,11 @@ export default function Contact() {
         <div className="rail-content grid md:grid-cols-2 gap-10">
           {/* LEFT — заголовок */}
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold
+            <div
+              className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold
                             border border-black/10 bg-white/70 text-[var(--pc-ink-light)]
-                            dark:bg-white/10 dark:text-[var(--pc-ink)] dark:border-white/15">
+                            dark:bg-white/10 dark:text-[var(--pc-ink)] dark:border-white/15"
+            >
               {D.badge}
             </div>
 
@@ -96,7 +98,9 @@ export default function Contact() {
               {D.title}
             </h3>
 
-            <p className="mt-2 text-black/70 dark:text-white/80">{D.subtitle}</p>
+            <p className="mt-2 text-black/70 dark:text-white/80">
+              {D.subtitle}
+            </p>
 
             <ul className="mt-6 grid gap-2 text-sm text-black/70 dark:text-white/80">
               <li>• {D.points[0]}</li>
@@ -119,12 +123,18 @@ export default function Contact() {
             <div
               aria-hidden
               className="pointer-events-none absolute -top-12 -left-12 h-60 w-60 rounded-full blur-3xl opacity-20"
-              style={{ background: "radial-gradient(closest-side,#ffd16688,transparent)" }}
+              style={{
+                background:
+                  "radial-gradient(closest-side,#ffd16688,transparent)",
+              }}
             />
             <div
               aria-hidden
               className="pointer-events-none absolute -bottom-16 -right-16 h-72 w-72 rounded-full blur-3xl opacity-20"
-              style={{ background: "radial-gradient(closest-side,#3a2f6f66,transparent)" }}
+              style={{
+                background:
+                  "radial-gradient(closest-side,#3a2f6f66,transparent)",
+              }}
             />
 
             <div className="relative z-10 grid gap-3">
@@ -144,14 +154,39 @@ export default function Contact() {
                       type="button"
                       onClick={() => toggle(c.id)}
                       aria-pressed={active}
+                      aria-label={c.label}
                       className={[
-                        "rounded-xl px-3 py-2 text-sm text-left transition",
+                        "relative rounded-xl px-3 py-2 text-sm text-left transition",
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--pc-gold)]/60",
                         active
-                          ? "border border-[var(--pc-gold)] bg-[var(--pc-gold)]/15 text-[var(--pc-gold)]"
-                          : "border border-black/10 bg-white/60 text-[var(--pc-ink-light)] hover:bg-black/5",
-                        "dark:border-white/15 dark:bg-white/10 dark:text-[var(--pc-ink)] dark:hover:bg-white/15",
+                          ? // ACTIVE — светлая и тёмная
+                            [
+                              "border border-[var(--pc-gold)]",
+                              "bg-[var(--pc-gold)]/15 text-[var(--pc-gold)]",
+                              // в тёмной — делаем заполнение золотом, чтобы контраст был максимальным
+                              "dark:bg-[var(--pc-gold)] dark:text-[#2c1f56] dark:border-transparent",
+                              "shadow-[0_6px_18px_-8px_rgba(255,209,102,.55)]",
+                            ].join(" ")
+                          : // INACTIVE
+                            [
+                              "border border-black/10 bg-white/60 text-[var(--pc-ink-light)] hover:bg-black/5",
+                              "dark:border-white/15 dark:bg-white/5 dark:text-[var(--pc-ink)]/85 dark:hover:bg-white/10",
+                            ].join(" "),
                       ].join(" ")}
                     >
+                      {/* чек-иконка для активных */}
+                      {active && (
+                        <span
+                          className="
+            absolute -right-2 -top-2 grid h-5 w-5 place-items-center rounded-full
+            bg-[var(--pc-gold)] text-[#2c1f56] text-[10px] font-extrabold
+            shadow-[0_6px_16px_-6px_rgba(255,209,102,.7)]
+          "
+                          aria-hidden
+                        >
+                          ✓
+                        </span>
+                      )}
                       {c.label}
                     </button>
                   );
@@ -168,8 +203,12 @@ export default function Contact() {
                     className="min-h-[120px] resize-vertical"
                   />
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-black/50 dark:text-white/60">{D.hint}</span>
-                    <span className="text-black/50 dark:text-white/60">{other.length}/{max}</span>
+                    <span className="text-black/50 dark:text-white/60">
+                      {D.hint}
+                    </span>
+                    <span className="text-black/50 dark:text-white/60">
+                      {other.length}/{max}
+                    </span>
                   </div>
                 </div>
               )}
@@ -201,33 +240,55 @@ export default function Contact() {
 }
 
 /* локальная i18n-таблица с новыми фразами */
-const dict: Record<"ru" | "kz", {
-  badge: string; title: string; subtitle: string; points: string[];
-  chips: { id: string; label: string }[];
-  pName: string; optional: string; pOther: string; hint: string;
-  btnSend: string; btnSending: string; privacy: string;
-  // новое:
-  greetWithName: string; greetNoName: string; aboutPrefix: string; wordOther: string; fPing: string;
-}> = {
+const dict: Record<
+  "ru" | "kz",
+  {
+    badge: string;
+    title: string;
+    subtitle: string;
+    points: string[];
+    chips: { id: string; label: string }[];
+    pName: string;
+    optional: string;
+    pOther: string;
+    hint: string;
+    btnSend: string;
+    btnSending: string;
+    privacy: string;
+    // новое:
+    greetWithName: string;
+    greetNoName: string;
+    aboutPrefix: string;
+    wordOther: string;
+    fPing: string;
+  }
+> = {
   ru: {
     badge: "Быстрый контакт",
     title: "Оставьте сообщение — ответим в WhatsApp",
     subtitle: "Выберите тему обращения или напишите своё. Имя — по желанию.",
-    points: ["Бесплатная консультация", "Без лишних формальностей", "Отвечаем оперативно"],
+    points: [
+      "Бесплатная консультация",
+      "Без лишних формальностей",
+      "Отвечаем оперативно",
+    ],
     chips: [
       { id: "secured", label: "Кредит под/без залога" },
-      { id: "refi",    label: "Рефинансирование" },
-      { id: "smb",     label: "Кредит для ИП/ТОО" },
-      { id: "score",   label: "Улучшение кредитного рейтинга" },
-      { id: "urgent",  label: "Срочно нужны деньги" },
-      { id: "advice",  label: "Нужна консультация" },
-      { id: "other",   label: "Другое" },
+      { id: "refi", label: "Рефинансирование" },
+      { id: "smb", label: "Кредит для ИП/ТОО" },
+      { id: "score", label: "Улучшение кредитного рейтинга" },
+      { id: "urgent", label: "Срочно нужны деньги" },
+      { id: "advice", label: "Нужна консультация" },
+      { id: "other", label: "Другое" },
     ],
-    pName: "Ваше имя", optional: "необязательно", pOther: "Опишите вашу ситуацию…",
+    pName: "Ваше имя",
+    optional: "необязательно",
+    pOther: "Опишите вашу ситуацию…",
     hint: "Можно просто выбрать темы выше — этого достаточно",
     btnSend: "Отправить сообщение в WhatsApp",
     btnSending: "Отправляем…",
-    privacy: "Сообщение отправится через WhatsApp. Ваши данные не передаются третьим лицам.",
+    privacy:
+      "Сообщение отправится через WhatsApp. Ваши данные не передаются третьим лицам.",
     // новое:
     greetWithName: "Здравствуйте! Меня зовут {name}.",
     greetNoName: "Здравствуйте!",
@@ -238,22 +299,30 @@ const dict: Record<"ru" | "kz", {
   kz: {
     badge: "Жылдам байланыс",
     title: "Хабарлама қалдырыңыз — WhatsApp-та жауап береміз",
-    subtitle: "Тақырыпты таңдаңыз немесе өз өтінішіңізді жазыңыз. Атыңыз — міндетті емес.",
-    points: ["Тегін консультация", "Қосымша формалдықтарсыз", "Жедел жауап береміз"],
+    subtitle:
+      "Тақырыпты таңдаңыз немесе өз өтінішіңізді жазыңыз. Атыңыз — міндетті емес.",
+    points: [
+      "Тегін консультация",
+      "Қосымша формалдықтарсыз",
+      "Жедел жауап береміз",
+    ],
     chips: [
       { id: "secured", label: "Кепілді/кепілсіз несие" },
-      { id: "refi",    label: "Рефинанcирлеу" },
-      { id: "smb",     label: "ЖК/ЖШС үшін несие" },
-      { id: "score",   label: "Кредиттік рейтингті жақсарту" },
-      { id: "urgent",  label: "Шұғыл қаражат керек" },
-      { id: "advice",  label: "Кеңес керек" },
-      { id: "other",   label: "Басқа" },
+      { id: "refi", label: "Рефинанcирлеу" },
+      { id: "smb", label: "ЖК/ЖШС үшін несие" },
+      { id: "score", label: "Кредиттік рейтингті жақсарту" },
+      { id: "urgent", label: "Шұғыл қаражат керек" },
+      { id: "advice", label: "Кеңес керек" },
+      { id: "other", label: "Басқа" },
     ],
-    pName: "Атыңыз", optional: "міндетті емес", pOther: "Жағдайыңызды сипаттаңыз…",
+    pName: "Атыңыз",
+    optional: "міндетті емес",
+    pOther: "Жағдайыңызды сипаттаңыз…",
     hint: "Жоғарыдан бір-екі тақырыпты таңдау жеткілікті",
     btnSend: "WhatsApp арқылы хабарлама жіберу",
     btnSending: "Жіберілуде…",
-    privacy: "Хабарлама WhatsApp арқылы жіберіледі. Деректеріңіз үшінші тұлғаларға берілмейді.",
+    privacy:
+      "Хабарлама WhatsApp арқылы жіберіледі. Деректеріңіз үшінші тұлғаларға берілмейді.",
     // новое:
     greetWithName: "Сәлеметсіз бе! Менің атым {name}.",
     greetNoName: "Сәлеметсіз бе!",
