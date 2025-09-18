@@ -1,5 +1,23 @@
-export default function Home() {
+import Header from "@/components/header";
+import Hero from "@/components/hero";
+import Services from "@/components/services";
+import FeaturesRefi from "@/components/features-refi";
+import CTA from "@/components/cta";
+import Contact from "@/components/contact";
+import Footer from "@/components/footer";
+
+export default function Page() {
   return (
-   <div>Prime-capital</div>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <Services />
+        <FeaturesRefi />
+        <CTA />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 }
