@@ -14,7 +14,7 @@ export default function Header() {
       <div className="container h-[var(--header-h)] flex items-center justify-between gap-4">
         <Link href="#" className="flex items-center gap-3">
           <Image
-            src="/logo.png"
+            src="/logo.jpg"
             alt="Prime Capital"
             width={44}
             height={44}

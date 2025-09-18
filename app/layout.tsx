@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" suppressHydrationWarning>
-      <body className="min-h-dvh bg-background text-foreground antialiased">
+      <body className=" container mx-auto">
         <Providers>{children}</Providers>
       </body>
     </html>
