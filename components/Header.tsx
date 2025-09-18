@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, Phone } from "lucide-react";
-import ThemeToggle from "./theme-toggle";
-import LanguageToggle from "./language-toggle";
+import ThemeToggle from "./ThemeToggle";
+import LanguageToggle from "./LanguageToggle";
 import { useI18n } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 import {

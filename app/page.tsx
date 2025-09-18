@@ -1,11 +1,11 @@
-import Header from "@/components/header";
-import Hero from "@/components/hero";
-import Services from "@/components/services";
-import FeaturesRefi from "@/components/features-refi";
-import CTA from "@/components/cta";
-import Contact from "@/components/contact";
-import Footer from "@/components/footer";
-import Testimonials from "@/components/testimonials";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import Services from "@/components/Services";
+import FeaturesRefi from "@/components/FeaturesRefi";
+import CTA from "@/components/CTA";
+import Contact from "@/components/Contact";
+import Testimonials from "@/components/Testimonials";
+import Footer from "@/components/Footer";
 
 export default function Page() {
   return (
