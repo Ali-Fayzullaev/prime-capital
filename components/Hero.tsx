@@ -8,7 +8,6 @@ import React, { useRef, useState } from "react";
 import {
   Check,
   ShieldCheck,
-  Percent,
   Play,
   Pause,
   Volume2,
