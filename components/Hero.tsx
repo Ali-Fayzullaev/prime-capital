@@ -12,6 +12,7 @@ import {
   Pause,
   Volume2,
   VolumeX,
+  MessageCircle,
 } from "lucide-react";
 
 export default function Hero() {
@@ -76,19 +77,42 @@ export default function Hero() {
 
           {/* CTA */}
           <div className="mt-6 flex flex-wrap gap-3">
-            {/* primary (light: контур золото → ховер заливка; dark: сразу заливка) */}
+            {/* primary → ведёт в контактный блок */}
             <Button
               asChild
               size="lg"
               className="
-                font-semibold
-                border border-[var(--pc-gold)] text-[var(--pc-gold)]
-                hover:bg-[var(--pc-gold)] hover:text-[#2c1f56]
-                dark:border-transparent dark:bg-[var(--pc-gold)] dark:text-[#2c1f56]
-                dark:hover:brightness-110
-              "
+      font-semibold
+      border border-[var(--pc-gold)] text-[var(--pc-gold)]
+      hover:bg-[var(--pc-gold)] hover:text-[#2c1f56]
+      dark:border-transparent dark:bg-[var(--pc-gold)] dark:text-[#2c1f56]
+      dark:hover:brightness-110
+    "
             >
               <a href="#contact">{t("hero_cta")}</a>
+            </Button>
+
+            {/* заметный WhatsApp — сразу открывает чат */}
+            <Button
+              asChild
+              size="lg"
+              className="
+      font-semibold
+      inline-flex items-center gap-2
+      bg-[var(--pc-gold)] text-[#2c1f56]
+      hover:brightness-110
+      shadow-[0_10px_30px_-10px_rgba(255,209,102,.55)]
+    "
+            >
+              <a
+                href={SITE.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Написать в WhatsApp"
+              >
+                <MessageCircle className="h-5 w-5" />
+                WhatsApp
+              </a>
             </Button>
 
             {/* secondary: звонок */}
@@ -97,16 +121,17 @@ export default function Hero() {
               size="lg"
               variant="outline"
               className="
-                border-black/10 text-[var(--pc-ink-light)]
-                hover:bg-black/5
-                dark:border-white/15 dark:text-[var(--pc-ink)] dark:hover:bg-white/10
-              "
+      border-black/10 text-[var(--pc-ink-light)]
+      hover:bg-black/5
+      dark:border-white/15 dark:text-[var(--pc-ink)] dark:hover:bg-white/10
+    "
             >
               <a href={`tel:${SITE.phoneMain.replace(/\s/g, "")}`}>
                 {SITE.phoneMain}
               </a>
             </Button>
           </div>
+          <MobileWhatsAppBar />
 
           {/* преимущества */}
           <ul className="mt-6 grid gap-3 text-sm">
@@ -239,5 +264,39 @@ function VideoAmbient() {
         </button>
       </div>
     </>
+  );
+}
+function MobileWhatsAppBar() {
+  // показываем только на мобилке (sm:hidden)
+  return (
+    <div className="sm:hidden fixed inset-x-0 bottom-0 z-50 px-3 pb-3">
+      <div
+        className="
+          mx-auto max-w-[680px]
+          rounded-2xl border
+          border-black/10 bg-white/80 backdrop-blur
+          dark:border-white/15 dark:bg-white/10
+          shadow-lg
+          p-2
+        "
+      >
+        <a
+          href={SITE.whatsapp}
+          target="_blank"
+          rel="noreferrer"
+          className="
+            inline-flex w-full items-center justify-center gap-2
+            rounded-xl px-4 py-3 text-base font-semibold
+            bg-[var(--pc-gold)] text-[#2c1f56]
+            hover:brightness-110
+            shadow-[0_10px_30px_-10px_rgba(255,209,102,.55)]
+          "
+          aria-label="Написать в WhatsApp"
+        >
+          <MessageCircle className="h-5 w-5" />
+          Написать в WhatsApp
+        </a>
+      </div>
+    </div>
   );
 }
