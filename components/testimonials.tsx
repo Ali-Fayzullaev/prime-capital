@@ -153,7 +153,7 @@ export default function Testimonials() {
               {/* Стрелки */}
               <CarouselPrevious
                 className={cn(
-                  "left-0 -top-12 z-50  md:top-1/2 md:-translate-y-1/2",
+                  "left-0 -top-4 z-50  md:top-1/2 md:-translate-y-1/2",
                   "border border-black/10 bg-white/70 backdrop-blur text-black/80",
                   "hover:bg-white/80",
                   "dark:border-white/15 dark:bg-white/10 dark:text-white/90 dark:hover:bg-white/15"
@@ -163,7 +163,7 @@ export default function Testimonials() {
               </CarouselPrevious>
               <CarouselNext
                 className={cn(
-                  "right-0 -top-12 z-50 md:top-1/2 md:-translate-y-1/2",
+                  "right-0 -top-4 z-50 md:top-1/2 md:-translate-y-1/2",
                   "border border-black/10 bg-white/70 backdrop-blur text-black/80",
                   "hover:bg-white/80",
                   "dark:border-white/15 dark:bg-white/10 dark:text-white/90 dark:hover:bg-white/15"

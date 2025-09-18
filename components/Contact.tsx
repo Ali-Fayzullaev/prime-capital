@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useI18n } from "@/lib/i18n";
+import { buildWhatsAppUrl, getWaPhone } from "@/lib/wa";
 import { SITE } from "@/lib/site";
 
 type Lang = "ru" | "kz";
@@ -76,6 +77,32 @@ export default function Contact() {
 
     const text = encodeURIComponent(`${greet}\n${about}`);
 
+    const phone = getWaPhone(SITE.whatsapp, SITE.phoneMain); // берём цифры
+    const textLines = [
+      // твой красивый текст:
+      name
+        ? lang === "kz"
+          ? `Сәлеметсіз бе! Менің атым ${name}.`
+          : `Здравствуйте! Меня зовут ${name}.`
+        : lang === "kz"
+        ? "Сәлеметсіз бе!"
+        : "Здравствуйте!",
+      // пример для тем / «Другое»:
+      subjects.length
+        ? lang === "kz"
+          ? `Мен келесі тақырып бойынша хабарласқым келеді: ${formatList(
+              subjects,
+              "kz"
+            )}.`
+          : `Я обращаюсь по поводу: ${formatList(subjects, "ru")}.`
+        : lang === "kz"
+        ? "Кеңес алғым келеді."
+        : "Хочу получить консультацию.",
+    ].join("\n");
+
+    // ВАЖНО: передаём «сырой» текст — хелпер сам закодирует
+    const url = buildWhatsAppUrl(phone, textLines);
+    window.open(url, "_blank", "noopener,noreferrer");
     window.open(`${SITE.whatsapp}?text=${text}`, "_blank");
     setTimeout(() => setSending(false), 400);
   };
