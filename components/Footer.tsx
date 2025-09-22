@@ -47,6 +47,35 @@ export default function Footer() {
                 {t("footer_copy")}
               </p>
               <div className="mt-4 h-[3px] w-24 rounded-full bg-[var(--pc-gold)]/80" />
+              <ul className=" space-y-2 mt-3">
+                 <li>
+                  <Link
+                    href="/requisites"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                  >
+                    <ScrollText className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
+                    {t("nav_requisites")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/privacy"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                  >
+                    <ScrollText className="h-4 w-4 text-[var(--pc-gold)] group-hover:translate-x-0.5 transition-transform" />
+                    {t("nav_privacy")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/offer"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                  >
+                    <ScrollText className="h-4 w-4 text-[var(--pc-gold)] group-hover:translate-x-0.5 transition-transform" />
+                    {t("nav_offer")}
+                  </Link>
+                </li>
+              </ul>
             </div>
 
             {/* Быстрые ссылки */}
@@ -91,24 +120,7 @@ export default function Footer() {
                     {t("reviews")}
                   </a>
                 </li>
-                <li>
-                  <Link
-                    href="/requisites"
-                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
-                  >
-                    <ScrollText className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
-                    {t("nav_requisites")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/privacy"
-                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
-                  >
-                    <ScrollText className="h-4 w-4 text-[var(--pc-gold)] group-hover:translate-x-0.5 transition-transform" />
-                    {t("nav_privacy")}
-                  </Link>
-                </li>
+               
               </ul>
             </nav>
 

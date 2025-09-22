@@ -61,6 +61,7 @@ const DICT: Dict = {
     nav_privacy: "Политика конфиденциальности",
     privacy_title: "Политика конфиденциальности",
     updated: "Обновлено",
+    nav_offer: "Публичная оферта"
   },
   kz: {
     nav_services: "Қызметтер",
@@ -112,6 +113,7 @@ const DICT: Dict = {
     nav_privacy: "Құпиялылық саясаты",
     privacy_title: "Құпиялылық саясаты",
     updated: "Жаңартылған",
+    nav_offer: "Жария оферта"
   },
 };
 

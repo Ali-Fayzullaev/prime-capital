@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useI18n } from "@/lib/i18n";
 import { buildWhatsAppUrl, getWaPhone } from "@/lib/wa";
 import { SITE } from "@/lib/site";
+import Link from "next/link";
 
 type Lang = "ru" | "kz";
 
@@ -170,7 +171,6 @@ export default function Contact() {
                 onChange={(e) => setName(e.target.value)}
                 placeholder={`${D.pName} (${D.optional})`}
               />
-
               {/* Chips */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {D.chips.map((c) => {
@@ -219,7 +219,6 @@ export default function Contact() {
                   );
                 })}
               </div>
-
               {/* Другое */}
               {(selected.includes("other") || other) && (
                 <div className="grid gap-1.5">
@@ -239,7 +238,30 @@ export default function Contact() {
                   </div>
                 </div>
               )}
-
+              <label className="flex items-start gap-2 text-xs text-black/70 dark:text-white/80">
+                <input type="checkbox" required className="mt-0.5" />
+                <span>
+                  {lang === "ru" ? "Я принимаю " : "Мен қабылдаймын "}
+                  <Link
+                    href="/offer"
+                    className="underline hover:text-[var(--pc-gold)]"
+                  >
+                    {lang === "ru"
+                      ? "условия Публичной оферты"
+                      : "Жария оферта шарттарын"}
+                  </Link>{" "}
+                  {lang === "ru" ? "и" : "және"}{" "}
+                  <Link
+                    href="/privacy"
+                    className="underline hover:text-[var(--pc-gold)]"
+                  >
+                    {lang === "ru"
+                      ? "Политику конфиденциальности"
+                      : "Құпиялылық саясатын"}
+                  </Link>
+                  .
+                </span>
+              </label>
               <Button
                 type="submit"
                 disabled={!canSend || sending}
@@ -253,7 +275,6 @@ export default function Contact() {
               >
                 {sending ? D.btnSending : D.btnSend}
               </Button>
-
               <p className="text-xs text-black/55 dark:text-white/60">
                 {D.privacy}
               </p>
