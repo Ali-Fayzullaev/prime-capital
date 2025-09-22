@@ -9,7 +9,8 @@ import {
   MessageCircle,
   ChevronRight,
   Copyright,
-  ScrollText 
+  ScrollText, 
+  Mail
 } from "lucide-react";
 
 export default function Footer() {
@@ -120,6 +121,15 @@ export default function Footer() {
                   className="hover:text-[var(--pc-gold)]"
                 >
                   {SITE.phoneMain}
+                </a>
+              </div>
+              <div className="mt-2 flex items-center gap-2">
+                <Mail className="h-4 w-4 text-[var(--pc-gold)]" />
+                <a
+                  href={`mailto:${SITE.email}`}
+                  className="hover:text-[var(--pc-gold)]"
+                >
+                  {SITE.email}
                 </a>
               </div>
 
