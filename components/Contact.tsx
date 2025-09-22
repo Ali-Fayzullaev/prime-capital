@@ -262,6 +262,22 @@ export default function Contact() {
                   .
                 </span>
               </label>
+              <label className="flex items-start gap-2 text-xs text-black/70 dark:text-white/80">
+                <input type="checkbox" required className="mt-0.5" />
+                <span>
+                  {lang === "ru" ? "Согласен на " : "Жеке деректерді "}
+                  <Link
+                    href="/consent"
+                    className="underline hover:text-[var(--pc-gold)]"
+                  >
+                    {lang === "ru"
+                      ? "обработку персональных данных"
+                      : "өңдеуге келісемін"}
+                  </Link>
+                  .
+                </span>
+              </label>
+
               <Button
                 type="submit"
                 disabled={!canSend || sending}

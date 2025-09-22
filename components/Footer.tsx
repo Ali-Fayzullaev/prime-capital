@@ -48,7 +48,7 @@ export default function Footer() {
               </p>
               <div className="mt-4 h-[3px] w-24 rounded-full bg-[var(--pc-gold)]/80" />
               <ul className=" space-y-2 mt-3">
-                 <li>
+                <li>
                   <Link
                     href="/requisites"
                     className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
@@ -75,6 +75,12 @@ export default function Footer() {
                     {t("nav_offer")}
                   </Link>
                 </li>
+                <Link href="/consent" className="hover:text-[var(--pc-gold)]">
+                  <ScrollText className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
+                  {lang === "ru"
+                    ? "Согласие на обработку ПД"
+                    : "Жеке деректерді өңдеуге келісім"}
+                </Link>
               </ul>
             </div>
 
@@ -120,7 +126,6 @@ export default function Footer() {
                     {t("reviews")}
                   </a>
                 </li>
-               
               </ul>
             </nav>
 
