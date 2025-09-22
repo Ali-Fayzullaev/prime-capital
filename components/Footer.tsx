@@ -3,13 +3,25 @@
 import { SITE } from "@/lib/site";
 import { useI18n } from "@/lib/i18n";
 import Link from "next/link";
-import { MapPin, Phone, MessageCircle, ChevronRight, Copyright } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  MessageCircle,
+  ChevronRight,
+  Copyright,
+  ScrollText 
+} from "lucide-react";
 
 export default function Footer() {
-  const { t, lang } = useI18n() as { t: (k: string) => string; lang: "ru" | "kz" };
+  const { t, lang } = useI18n() as {
+    t: (k: string) => string;
+    lang: "ru" | "kz";
+  };
   const year = new Date().getFullYear();
-  const rights = lang === "kz" ? "Барлық құқықтар қорғалған." : "Все права защищены.";
-  const whatsappLabel = lang === "kz" ? "WhatsApp-қа жазу" : "Написать в WhatsApp";
+  const rights =
+    lang === "kz" ? "Барлық құқықтар қорғалған." : "Все права защищены.";
+  const whatsappLabel =
+    lang === "kz" ? "WhatsApp-қа жазу" : "Написать в WhatsApp";
 
   return (
     <footer className="mt-16">
@@ -43,28 +55,49 @@ export default function Footer() {
               </div>
               <ul className="space-y-2">
                 <li>
-                  <a href="#services" className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]">
+                  <a
+                    href="#services"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                  >
                     <ChevronRight className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
                     {t("nav_services")}
                   </a>
                 </li>
                 <li>
-                  <a href="#refi" className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]">
+                  <a
+                    href="#refi"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                  >
                     <ChevronRight className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
                     {t("nav_refi")}
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]">
+                  <a
+                    href="#contact"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                  >
                     <ChevronRight className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
                     {t("nav_contact")}
                   </a>
                 </li>
                 <li>
-                  <a href="#reviews" className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]">
+                  <a
+                    href="#reviews"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                  >
                     <ChevronRight className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
                     {t("reviews")}
                   </a>
+                </li>
+                <li>
+                  <Link
+                    href="/requisites"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                  >
+                    <ScrollText  className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
+                    {t("nav_requisites")}
+                  </Link>
                 </li>
               </ul>
             </nav>
