@@ -9,8 +9,12 @@ import {
   MessageCircle,
   ChevronRight,
   Copyright,
-  ScrollText,
   Mail,
+  FileText,
+  FileSignature,
+  Shield,
+  ScrollText,
+  MessageSquareQuote,
 } from "lucide-react";
 
 export default function Footer() {
@@ -18,11 +22,20 @@ export default function Footer() {
     t: (k: string) => string;
     lang: "ru" | "kz";
   };
+
   const year = new Date().getFullYear();
-  const rights =
-    lang === "kz" ? "Барлық құқықтар қорғалған." : "Все права защищены.";
-  const whatsappLabel =
-    lang === "kz" ? "WhatsApp-қа жазу" : "Написать в WhatsApp";
+  const rights = lang === "kz" ? "Барлық құқықтар қорғалған." : "Все права защищены.";
+  const whatsappLabel = lang === "kz" ? "WhatsApp-қа жазу" : "Написать в WhatsApp";
+  const navTitle = lang === "kz" ? "Навигация" : "Навигация";
+  const contactsTitle = lang === "kz" ? "Байланыс" : "Контакты";
+  const docsTitle = lang === "kz" ? "Құжаттар" : "Документы";
+  const privacyTagline =
+    lang === "kz"
+      ? "Құпиялылықты құрметтейміз · Кеңес тегін"
+      : "Уважаем конфиденциальность · Консультация бесплатна";
+
+  // кликабельная карта: если в SITE нет mapUrl — строим по адресу
+  const mapUrl = (SITE as any).mapUrl || `https://maps.google.com/?q=${encodeURIComponent(SITE.address)}`;
 
   return (
     <footer className="mt-16">
@@ -37,7 +50,7 @@ export default function Footer() {
         "
       >
         <div className="rail py-10">
-          <div className="rail-content grid gap-8 md:grid-cols-3">
+          <div className="rail-content grid gap-10 md:grid-cols-4">
             {/* Бренд + копирайт-текст */}
             <div>
               <div className="text-lg font-extrabold tracking-tight">
@@ -47,11 +60,14 @@ export default function Footer() {
                 {t("footer_copy")}
               </p>
               <div className="mt-4 h-[3px] w-24 rounded-full bg-[var(--pc-gold)]/80" />
-              <ul className=" space-y-2 mt-3">
+
+              {/* быстрые “юридические” ссылки (дубли сверху в отдельном блоке ниже) */}
+              <ul className="mt-4 space-y-2 text-sm">
                 <li>
                   <Link
                     href="/requisites"
                     className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                    aria-label={t("nav_requisites")}
                   >
                     <ScrollText className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
                     {t("nav_requisites")}
@@ -59,36 +75,40 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
+                    href="/offer"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                    aria-label={t("nav_offer")}
+                  >
+                    <FileText className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
+                    {t("nav_offer")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/privacy"
                     className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                    aria-label={t("nav_privacy")}
                   >
-                    <ScrollText className="h-4 w-4 text-[var(--pc-gold)] group-hover:translate-x-0.5 transition-transform" />
+                    <Shield className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
                     {t("nav_privacy")}
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/offer"
+                    href="/consent"
                     className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                    aria-label={lang === "ru" ? "Согласие на обработку ПД" : "Жеке деректерді өңдеуге келісім"}
                   >
-                    <ScrollText className="h-4 w-4 text-[var(--pc-gold)] group-hover:translate-x-0.5 transition-transform" />
-                    {t("nav_offer")}
+                    <FileSignature className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
+                    {lang === "ru" ? "Согласие на обработку ПД" : "Жеке деректерді өңдеуге келісім"}
                   </Link>
                 </li>
-                <Link href="/consent" className="hover:text-[var(--pc-gold)]">
-                  <ScrollText className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
-                  {lang === "ru"
-                    ? "Согласие на обработку ПД"
-                    : "Жеке деректерді өңдеуге келісім"}
-                </Link>
               </ul>
             </div>
 
-            {/* Быстрые ссылки */}
+            {/* Навигация */}
             <nav className="text-sm">
-              <div className="font-semibold mb-3">
-                {lang === "kz" ? "Навигация" : "Навигация"}
-              </div>
+              <div className="font-semibold mb-3">{navTitle}</div>
               <ul className="space-y-2">
                 <li>
                   <a
@@ -122,22 +142,71 @@ export default function Footer() {
                     href="#reviews"
                     className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
                   >
-                    <ChevronRight className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
+                    <MessageSquareQuote className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
                     {t("reviews")}
                   </a>
                 </li>
               </ul>
             </nav>
 
+            {/* Документы (повтор, но с отдельными иконками и в своей колонке) */}
+            <nav className="text-sm">
+              <div className="font-semibold mb-3">{docsTitle}</div>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/requisites"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                  >
+                    <ScrollText className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
+                    {t("nav_requisites")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/offer"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                  >
+                    <FileText className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
+                    {t("nav_offer")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/privacy"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                  >
+                    <Shield className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
+                    {t("nav_privacy")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/consent"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                  >
+                    <FileSignature className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
+                    {lang === "ru" ? "Согласие на обработку ПД" : "Жеке деректерді өңдеуге келісім"}
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+
             {/* Контакты */}
             <div className="text-sm">
-              <div className="font-semibold mb-3">
-                {lang === "kz" ? "Байланыс" : "Контакты"}
-              </div>
+              <div className="font-semibold mb-3">{contactsTitle}</div>
 
               <div className="flex items-start gap-2 text-black/80 dark:text-white/85">
                 <MapPin className="h-4 w-4 mt-0.5 text-[var(--pc-gold)]" />
-                <span>{SITE.address}</span>
+                <a
+                  href={mapUrl}
+                  target="_blank"
+                  rel="noopener"
+                  className="hover:text-[var(--pc-gold)]"
+                  aria-label={SITE.address}
+                >
+                  {SITE.address}
+                </a>
               </div>
 
               <div className="mt-2 flex items-center gap-2">
@@ -145,15 +214,18 @@ export default function Footer() {
                 <a
                   href={`tel:${SITE.phoneMain.replace(/\s/g, "")}`}
                   className="hover:text-[var(--pc-gold)]"
+                  aria-label={SITE.phoneMain}
                 >
                   {SITE.phoneMain}
                 </a>
               </div>
+
               <div className="mt-2 flex items-center gap-2">
                 <Mail className="h-4 w-4 text-[var(--pc-gold)]" />
                 <a
                   href={`mailto:${SITE.email}`}
                   className="hover:text-[var(--pc-gold)]"
+                  aria-label={SITE.email}
                 >
                   {SITE.email}
                 </a>
@@ -164,6 +236,8 @@ export default function Footer() {
                 <Link
                   href={SITE.whatsapp}
                   target="_blank"
+                  rel="noopener"
+                  aria-label={whatsappLabel}
                   className="
                     inline-flex items-center gap-2 rounded-full px-3 py-1.5
                     border border-[var(--pc-gold)] text-[var(--pc-gold)]
@@ -186,11 +260,7 @@ export default function Footer() {
                 {year} Prime Capital. {rights}
               </span>
             </div>
-            <div className="opacity-80">
-              {lang === "kz"
-                ? "Құпиялылықты құрметтейміз · Кеңес тегін"
-                : "Уважаем конфиденциальность · Консультация бесплатна"}
-            </div>
+            <div className="opacity-80">{privacyTagline}</div>
           </div>
         </div>
 
