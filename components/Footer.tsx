@@ -1,6 +1,6 @@
 "use client";
 
-import { SITE } from "@/lib/site";
+import { SITE, SITES } from "@/lib/site";
 import { useI18n } from "@/lib/i18n";
 import Link from "next/link";
 import {
@@ -34,8 +34,7 @@ export default function Footer() {
       ? "Құпиялылықты құрметтейміз · Кеңес тегін"
       : "Уважаем конфиденциальность · Консультация бесплатна";
 
-  // кликабельная карта: если в SITE нет mapUrl — строим по адресу
-  const mapUrl = (SITE as any).mapUrl || `https://maps.google.com/?q=${encodeURIComponent(SITE.address)}`;
+ const mapUrl = SITES.mapUrl ?? `https://maps.google.com/?q=${encodeURIComponent(SITE.address)}`;
 
   return (
     <footer className="mt-16">

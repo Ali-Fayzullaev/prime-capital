@@ -16,6 +16,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import type { ReactNode } from "react";
+import type { ElementType, SVGProps } from "react";
 
 export default function RequisitesPage() {
   const data = {
@@ -98,7 +100,6 @@ export default function RequisitesPage() {
             <CardBlock
               title={t("requisites_contacts")}
               icon={<Phone className="h-4 w-4" />}
-
             >
               <Item
                 label={t("requisites_phone")}
@@ -190,12 +191,15 @@ export default function RequisitesPage() {
     </main>
   );
 }
+type IconType = ElementType<SVGProps<SVGSVGElement>>;
 
-function CardBlock({ title, icon, children }: any) {
+type CardBlockProps = { title: string; icon: ReactNode; children: ReactNode };
+
+function CardBlock({ title, icon, children }: CardBlockProps) {
   return (
     <div
       className="rounded-2xl border border-black/10 bg-white/70 backdrop-blur p-5
-                    dark:border-white/15 dark:bg-white/10 shadow-sm"
+                 dark:border-white/15 dark:bg-white/10 shadow-sm"
     >
       <div className="flex items-center gap-2 text-sm font-semibold text-black/70 dark:text-white/80">
         <span className="inline-grid place-items-center h-7 w-7 rounded-lg bg-[var(--pc-gold)]/15 text-[var(--pc-gold)]">

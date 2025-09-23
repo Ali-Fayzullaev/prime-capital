@@ -1,3 +1,11 @@
+export type SiteConfig = {
+  address: string;
+  phoneMain: string;
+  email: string;
+  whatsapp: string;
+  mapUrl?: string; // ← опционально
+};
+
 export const SITE = {
   whatsapp: "https://wa.me/77067367886",
 
@@ -37,3 +45,11 @@ export const SITE = {
     regAddress: "010000, проспект Әл-Фараби, д. 44, Астана, Казахстан",
   },
 } as const;
+
+export const SITES: SiteConfig = {
+  address: "010000, проспект Әл-Фараби, д. 44",
+  phoneMain: "+7 (706) 736-78-86",
+  email: "prime.capital.astana@gmail.com",
+  whatsapp: "https://wa.me/77067367886",
+  // mapUrl: "https://yandex.kz/maps/..." // если появится — подставим
+};
