@@ -59,50 +59,6 @@ export default function Footer() {
                 {t("footer_copy")}
               </p>
               <div className="mt-4 h-[3px] w-24 rounded-full bg-[var(--pc-gold)]/80" />
-
-              {/* быстрые “юридические” ссылки (дубли сверху в отдельном блоке ниже) */}
-              <ul className="mt-4 space-y-2 text-sm">
-                <li>
-                  <Link
-                    href="/requisites"
-                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
-                    aria-label={t("nav_requisites")}
-                  >
-                    <ScrollText className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
-                    {t("nav_requisites")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/offer"
-                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
-                    aria-label={t("nav_offer")}
-                  >
-                    <FileText className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
-                    {t("nav_offer")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/privacy"
-                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
-                    aria-label={t("nav_privacy")}
-                  >
-                    <Shield className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
-                    {t("nav_privacy")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/consent"
-                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
-                    aria-label={lang === "ru" ? "Согласие на обработку ПД" : "Жеке деректерді өңдеуге келісім"}
-                  >
-                    <FileSignature className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
-                    {lang === "ru" ? "Согласие на обработку ПД" : "Жеке деректерді өңдеуге келісім"}
-                  </Link>
-                </li>
-              </ul>
             </div>
 
             {/* Навигация */}
