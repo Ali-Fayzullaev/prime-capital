@@ -12,11 +12,23 @@ import {
   ListChecks,
   Info,
   ArrowLeft,
+  FileDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function RequisitesPage() {
+  const data = {
+    number: "KZ77UWQ07835337",
+    oked: "64999",
+    address: "010000, проспект Әл-Фараби, д. 44",
+    phone: "+7 (706) 736-78-86",
+    email: "prime.capital.astana@gmail.com",
+    // если есть локальный файл — положи в public/ и пропиши путь:
+    docHref: "/notification-ru-kz.docx", // или .docx, если нужно
+  };
+
   const { t, lang } = useI18n() as {
     t: (k: string) => string;
     lang: "ru" | "kz";
@@ -48,6 +60,35 @@ export default function RequisitesPage() {
             <ArrowLeft className="h-4 w-4" />
             {t("back")}
           </Button>
+          <div className="mt-5 flex flex-wrap gap-3">
+            {data.docHref && (
+              <Link
+                href={data.docHref}
+                download
+                className="
+                    inline-flex items-center gap-2 rounded-full px-3 py-1.5
+                    border border-[var(--pc-gold)] text-[var(--pc-gold)]
+                    hover:bg-[var(--pc-gold)] hover:text-[#2c1f56]
+                    transition-colors text-sm font-semibold
+                  "
+              >
+                <FileDown className="h-4 w-4" />
+                {lang === "kz" ? "Құжатты жүктеу" : "Скачать документ"}
+              </Link>
+            )}
+            <Link
+              href="/requisites"
+              className="
+                  inline-flex items-center gap-2 rounded-full px-3 py-1.5
+                  border border-black/10 text-[var(--pc-ink-light)]
+                  hover:bg-black/5
+                  dark:border-white/15 dark:text-[var(--pc-ink)] dark:hover:bg-white/10
+                  text-sm font-semibold
+                "
+            >
+              {lang === "kz" ? "Артқа" : "Назад"}
+            </Link>
+          </div>
         </div>
         <div className="rail-content">
           <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">
