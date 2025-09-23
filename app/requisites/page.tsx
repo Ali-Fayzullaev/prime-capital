@@ -4,7 +4,6 @@
 import { SITE } from "@/lib/site";
 import { useI18n } from "@/lib/i18n";
 import {
-  Mail,
   Phone,
   FileText,
   Building2,
@@ -99,6 +98,7 @@ export default function RequisitesPage() {
             <CardBlock
               title={t("requisites_contacts")}
               icon={<Phone className="h-4 w-4" />}
+
             >
               <Item
                 label={t("requisites_phone")}
