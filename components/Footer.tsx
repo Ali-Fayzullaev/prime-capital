@@ -24,8 +24,10 @@ export default function Footer() {
   };
 
   const year = new Date().getFullYear();
-  const rights = lang === "kz" ? "Барлық құқықтар қорғалған." : "Все права защищены.";
-  const whatsappLabel = lang === "kz" ? "WhatsApp-қа жазу" : "Написать в WhatsApp";
+  const rights =
+    lang === "kz" ? "Барлық құқықтар қорғалған." : "Все права защищены.";
+  const whatsappLabel =
+    lang === "kz" ? "WhatsApp-қа жазу" : "Написать в WhatsApp";
   const navTitle = lang === "kz" ? "Навигация" : "Навигация";
   const contactsTitle = lang === "kz" ? "Байланыс" : "Контакты";
   const docsTitle = lang === "kz" ? "Құжаттар" : "Документы";
@@ -34,7 +36,9 @@ export default function Footer() {
       ? "Құпиялылықты құрметтейміз · Кеңес тегін"
       : "Уважаем конфиденциальность · Консультация бесплатна";
 
- const mapUrl = SITES.mapUrl ?? `https://maps.google.com/?q=${encodeURIComponent(SITE.address)}`;
+  const mapUrl =
+    SITES.mapUrl ??
+    `https://maps.google.com/?q=${encodeURIComponent(SITE.address)}`;
 
   return (
     <footer className="mt-16">
@@ -101,6 +105,15 @@ export default function Footer() {
                     {t("reviews")}
                   </a>
                 </li>
+                <li>
+                  <Link
+                    href="/documents"
+                    className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
+                  >
+                    <ChevronRight className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
+                    {lang === "kz" ? "Барлық құжаттар" : "Все документы"}
+                  </Link>
+                </li>
               </ul>
             </nav>
 
@@ -141,7 +154,9 @@ export default function Footer() {
                     className="group inline-flex items-center gap-2 hover:text-[var(--pc-gold)]"
                   >
                     <FileSignature className="h-4 w-4 text-[var(--pc-gold)] opacity-80 group-hover:translate-x-0.5 transition-transform" />
-                    {lang === "ru" ? "Согласие на обработку ПД" : "Жеке деректерді өңдеуге келісім"}
+                    {lang === "ru"
+                      ? "Согласие на обработку ПД"
+                      : "Жеке деректерді өңдеуге келісім"}
                   </Link>
                 </li>
               </ul>
