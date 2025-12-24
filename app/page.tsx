@@ -4,7 +4,7 @@ import Services from "@/components/Services";
 import FeaturesRefi from "@/components/FeaturesRefi";
 import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
-import Testimonials from "@/components/Testimonials";
+import Testimonials from "@/components/TestimonialsComponent";
 import Footer from "@/components/Footer";
 
 export default function Page() {
