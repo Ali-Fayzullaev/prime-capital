@@ -4,7 +4,7 @@ export { default as Services } from './Services';
 export { default as FeaturesRefi } from './FeaturesRefi';
 export { default as CTA } from './CTA';
 export { default as Contact } from './Contact';
-export { default as Testimonials } from './Testimonials';
+export { default as Testimonials } from './TestimonialsComponent';
 export { default as Footer } from './Footer';
 export { default as LanguageToggle } from './LanguageToggle';
 export { default as ThemeToggle } from './ThemeToggle';
